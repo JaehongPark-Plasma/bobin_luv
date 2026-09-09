@@ -90,6 +90,12 @@ img { width: 100%; display: block; }
   justify-content: center;
 }
 
+.month-photo {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    width: 100%;
+}
+
 .eyebrow {
   margin: 0 0 18px;
   font-size: 12px;
