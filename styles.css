@@ -89,11 +89,11 @@ img { width: 100%; display: block; }
   flex-direction: column;
   justify-content: center;
 }
-
 .month-photo {
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
     width: 100%;
+    aspect-ratio: 3 / 4;   /* portrait */
+    object-fit: cover;
+    border-radius: 20px;
 }
 
 .eyebrow {
