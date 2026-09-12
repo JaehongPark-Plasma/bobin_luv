@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
-
 :root {
-  --font-display: 'Jua', sans-serif;
+  --font-display: 'Jua', 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
   --font-body: 'Pretendard', 
                  'Apple SD Gothic Neo',
                  'Noto Sans KR',
@@ -240,4 +238,20 @@ h2 { font-size: clamp(42px, 6vw, 76px); line-height: 1.25; letter-spacing: -.025
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* Use the loaded Jua font for display text at every screen size. */
+h1, h2, h3, .baby-name, .display-name, .serif,
+.hero-title, .section-title, .brand, .eyebrow,
+.floating-tag, .memory-card span, .memory-card p,
+.detail-block > span {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+/* Supporting copy and controls retain the readable Korean sans-serif. */
+.button, button, input, select, textarea {
+  font-family: var(--font-text);
 }
