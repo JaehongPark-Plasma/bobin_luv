@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
-
 :root {
   --font-display: 'Jua', 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
   --font-body: 'Pretendard', 
@@ -257,3 +255,48 @@ h1, h2, h3, .baby-name, .display-name, .serif,
 .button, button, input, select, textarea {
   font-family: var(--font-text);
 }
+
+/* One shared glass frame for the invitation and hero photograph. */
+.hero-card {
+  gap: 0;
+  padding: 12px;
+  overflow: hidden;
+}
+.hero-card .hero-copy {
+  min-height: 0;
+  padding: clamp(28px, 4vw, 56px);
+}
+.hero-card .hero-photo {
+  min-height: 0;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.hero-card .hero-photo img {
+  height: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+}
+@media (max-width: 820px) {
+  .hero-card .hero-copy { padding: 30px 20px; }
+  .hero-card .hero-photo { aspect-ratio: 4 / 5; }
+  .hero-card .floating-tag { right: 16px; bottom: 16px; }
+}
+@media (max-width: 520px) {
+  .hero-card { padding: 10px; border-radius: 28px; }
+  .hero-card .hero-copy { padding: 26px 14px 30px; }
+  .hero-card .hero-photo,
+  .hero-card .hero-photo img { border-radius: 20px; }
+}
+
+/* One photo at a time, in a shared glass frame. */
+.gallery-slider { width: min(100%, 620px); margin: 0 auto; padding: 12px; }
+.gallery-viewport { overflow: hidden; border-radius: 22px; touch-action: pan-y pinch-zoom; }
+.gallery-slide[hidden] { display: none; }
+.gallery-slide img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: contain; background: rgba(255,255,255,.3); }
+.gallery-controls { display: flex; align-items: center; justify-content: center; gap: 28px; padding: 16px 0 4px; }
+.gallery-controls button { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line); background: var(--glass-strong); color: var(--ink); cursor: pointer; font-size: 22px; }
+.gallery-controls button:hover { background: white; }
+.gallery-counter { min-width: 64px; text-align: center; font-variant-numeric: tabular-nums; }
+.gallery-slider:focus-visible, .gallery-controls button:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+@media (max-width: 520px) { .gallery-slider { padding: 8px; border-radius: 28px; } .gallery-viewport { border-radius: 20px; } }
