@@ -46,13 +46,13 @@ The liquid-glass effect uses:
 - ambient blurred background shapes
 
 ## Notes
-Pretendard Variable v1.3.9 is loaded from jsDelivr with dynamic subsets and font-display: swap. An internet connection is needed for the web font; if unavailable, the site uses installed Korean-capable system fonts (Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic) and other system fallbacks.
+Google Fonts are loaded from the web. If you want a fully self-contained site, switch to system fonts in `styles.css`.
 
-## Korean and English typography
-- Body text, links, and headings share Pretendard for consistent Hangul and Latin styling.
-- The baby name and quotation use a lighter, upright display treatment. Heading spacing and line height accommodate Hangul; Korean words stay together where possible, with emergency wrapping for unusually long text.
-- Edit the existing English placeholders freely. For mostly Korean content, change `<html lang="en">` to `<html lang="ko">`. Tag passages in the other language, for example `<p lang="en">A tiny year.</p>`.
-- Example heading: `<h1><span class="display-name">김하늘</span><br>첫 번째 생일</h1>`.
-- Adjust `--font-text` in `styles.css` to change the typeface. To use only system fonts, remove the two jsDelivr links from the HTML head and remove Pretendard from the font stack.
-- Font source and license information: https://github.com/orioncactus/pretendard (SIL Open Font License 1.1).
-- No build step is needed; all site files and image paths remain GitHub Pages-ready.
+
+## Typography
+
+Jua is loaded from Google Fonts for headings, the baby name, month numbers, and key labels. Pretendard is loaded from a pinned CDN release for body text, navigation, buttons, dates, venue details, addresses, and the family message. Korean system sans-serif fallbacks keep text readable if either font service is unavailable. Jua uses its natural 400 weight without synthetic bold or italics.
+
+Regular monthly photos use portrait 3:4 with object-fit: cover. The featured 12-month card retains its wide 16:7 desktop and 4:3 mobile treatment. Glass effects and responsive breakpoints are preserved.
+
+For a primarily Korean invitation, change `<html lang="en">` to `<html lang="ko">`. Upload the contents of this folder to your GitHub Pages publishing root; no build step is required.
