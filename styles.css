@@ -300,3 +300,12 @@ h1, h2, h3, .baby-name, .display-name, .serif,
 .gallery-counter { min-width: 64px; text-align: center; font-variant-numeric: tabular-nums; }
 .gallery-slider:focus-visible, .gallery-controls button:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
 @media (max-width: 520px) { .gallery-slider { padding: 8px; border-radius: 28px; } .gallery-viewport { border-radius: 20px; } }
+
+/* First-year recap: preserve the video's natural proportions. */
+.recap-frame { max-width: 900px; margin: 0 auto; padding: 12px; }
+.recap-video { display: block; width: 100%; height: auto; max-height: 80vh; object-fit: contain; border-radius: 22px; background: #171615; }
+.recap-video:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+@media (max-width: 520px) {
+  .recap-frame { padding: 8px; border-radius: 28px; }
+  .recap-video { border-radius: 20px; }
+}
