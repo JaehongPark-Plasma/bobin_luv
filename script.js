@@ -14,10 +14,27 @@ if (gallery) {
   const slides = [...gallery.querySelectorAll('.gallery-slide')];
   const counter = gallery.querySelector('.gallery-counter');
   let current = 0;
+  // Prepare two photos in each direction, including wraparound at the ends.
+  const preparedImages = new WeakSet();
+  function warmNeighbors() {
+    [0, 1, -1, 2, -2].forEach(offset => {
+      const i = (current + offset + slides.length) % slides.length;
+      const img = slides[i].querySelector('img');
+      img.loading = 'eager';
+      if (preparedImages.has(img)) return;
+      preparedImages.add(img);
+      // Decode hidden photos ahead of time as well as downloading them.
+      if (typeof img.decode === 'function') {
+        img.decode().catch(() => { preparedImages.delete(img); });
+      }
+    });
+  }
+  let galleryNearby = false;
   function show(index) {
     current = (index + slides.length) % slides.length;
     slides.forEach((slide, i) => { slide.hidden = i !== current; });
     counter.textContent = `${current + 1} / ${slides.length}`;
+    if (galleryNearby) warmNeighbors();
   }
   gallery.querySelector('.gallery-prev').addEventListener('click', () => show(current - 1));
   gallery.querySelector('.gallery-next').addEventListener('click', () => show(current + 1));
@@ -41,4 +58,12 @@ if (gallery) {
   }, {passive: true});
   viewport.addEventListener('touchcancel', () => { start = null; });
   show(0);
+  const galleryLoader = new IntersectionObserver(entries => {
+    if (entries.some(entry => entry.isIntersecting)) {
+      galleryNearby = true;
+      warmNeighbors();
+      galleryLoader.disconnect();
+    }
+  }, {rootMargin: '1000px'});
+  galleryLoader.observe(gallery);
 }
